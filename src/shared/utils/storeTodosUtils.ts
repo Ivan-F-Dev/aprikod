@@ -1,7 +1,7 @@
-// Функция для редактирования задачи
 import {ITodo} from "../../store/Todos";
 import {v4 as uuidv4} from "uuid";
 
+// Функция для редактирования задачи
 export const editTodoUtil = (id: string, updatedTodo: ITodo, todos: ITodo[]): ITodo[] => {
     return todos.map(todo => {
         if (todo.id === id) {
@@ -36,8 +36,7 @@ export const addTodoUtil = (todos: ITodo[], parentId: string | undefined, ): ITo
     };
 
     if (parentId === undefined) {
-        todos.unshift(newTodo)
-        return todos
+        return [newTodo,...todos]
     }
 
     return todos.map(todo => {
@@ -53,4 +52,31 @@ export const addTodoUtil = (todos: ITodo[], parentId: string | undefined, ): ITo
             };
         }
     });
+};
+
+// Функция для для поиска/фильтрации задач
+export const searchTodos = (
+    searchText: string,
+    todos: ITodo[],
+    field: 'title' | 'text',
+    includeNeighbours: boolean
+): ITodo[] => {
+    if (searchText === '') return []
+    const search = (todos: ITodo[]): ITodo[] => {
+        let result: ITodo[] = [];
+        for (const todo of todos) {
+            const matches = todo[field].toLowerCase().includes(searchText.toLowerCase());
+            const filteredChildrens = search(todo.childs);
+
+            if (matches || filteredChildrens.length > 0) {
+                result.push({
+                    ...todo,
+                    childs: includeNeighbours ? todo.childs : filteredChildrens
+                });
+            }
+        }
+        return result;
+    };
+
+    return search(todos);
 };
