@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/https//Ivan-F-Dev.github.io/aprikod/static/css/main.c9662ef3.css",
-    "main.js": "/https//Ivan-F-Dev.github.io/aprikod/static/js/main.94cdd00b.js",
-    "index.html": "/https//Ivan-F-Dev.github.io/aprikod/index.html",
-    "main.c9662ef3.css.map": "/https//Ivan-F-Dev.github.io/aprikod/static/css/main.c9662ef3.css.map",
-    "main.94cdd00b.js.map": "/https//Ivan-F-Dev.github.io/aprikod/static/js/main.94cdd00b.js.map"
+    "main.css": "/static/css/main.c9662ef3.css",
+    "main.js": "/static/js/main.94cdd00b.js",
+    "index.html": "/index.html",
+    "main.c9662ef3.css.map": "/static/css/main.c9662ef3.css.map",
+    "main.94cdd00b.js.map": "/static/js/main.94cdd00b.js.map"
   },
   "entrypoints": [
     "static/css/main.c9662ef3.css",
